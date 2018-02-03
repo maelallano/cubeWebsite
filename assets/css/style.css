@@ -7,10 +7,25 @@
   height: 100vh;
 }
 
-.testL1, .testL2 {
+.testL1, .testL2, .testL3 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.goUp, .goBottom, .goLeft, .goRight {
+  font-weight: 900;
+  font-size: 2em;
+}
+
+.goUp:hover, .goBottom:hover, .goLeft:hover, .goRight:hover {
+  color: silver;
+  text-decoration: line-through;
+  transition: .3s ease;
+}
+
+.left .testL3 {
+  justify-content: flex-end;
 }
 
 body {

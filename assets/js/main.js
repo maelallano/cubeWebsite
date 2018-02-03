@@ -1,6 +1,10 @@
 var cube = document.querySelector('.cube')
 var wrapper = document.querySelector('.wrapper')
 var face = document.querySelectorAll('.face')
+var goUp = document.querySelectorAll('.goUp')
+var goBottom = document.querySelectorAll('.goBottom')
+var goRight = document.querySelectorAll('.goRight')
+var goLeft = document.querySelectorAll('.goLeft')
 
 var x = 0
 var y = 0
@@ -107,6 +111,20 @@ const rightFct = () => {
 	}
 }
 
+for (var i = 0; i < goUp.length; i++) {
+	goUp[i].addEventListener('click', function() {
+		upFct()
+	})
+	goBottom[i].addEventListener('click', function() {
+		downFct()
+	})
+	goRight[i].addEventListener('click', function() {
+		rightFct()
+	})
+	goLeft[i].addEventListener('click', function() {
+		leftFct()
+	})
+}
 
 window.addEventListener('keydown', function(e) {
 	if (e.keyCode === 38) {
