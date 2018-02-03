@@ -1,3 +1,18 @@
+.test {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: red;
+  width: 100vw;
+  height: 100vh;
+}
+
+.testL1, .testL2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 body {
   overflow: hidden;
 }
@@ -35,27 +50,22 @@ body {
 }
 .back {
   transform: translateZ(-50vw) rotateY(180deg);
-  background: green;
 }
 .left {
   transform: rotateY(270deg) translateX(-50vw);
   transform-origin: center left;
-  background: red;
 }
 .right {
   transform: rotateY(-270deg) translateX(50vw);
   transform-origin: top right;
-  background: blue;
 }
 .top {
-  transform: rotateX(90deg) translateY(0vh);
-  transform-origin: top center;
-  background: purple;
+  /*transform: rotateX(90deg);*/
+  transform-origin: center;
 }
 .bottom {
-  transform: rotateX(-90deg) translateY(0vh);
-  transform-origin: bottom center;
-  background: yellow;
+  /*transform: rotateX(-90deg);*/
+  transform-origin: center;
 }
 
 /* IC TAC TOE */

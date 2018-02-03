@@ -7,12 +7,19 @@ var y = 0
 const speed = 90
 var check = 0
 var currentFace = 'front'
+const vw = window.innerWidth
+const vh = window.innerHeight
+const transZTopBot = 0.5 * vw - 0.5 * vh
+var transCubeZTopBot = -0.5 * vw + 0.5 * vh
+
+face[2].style.transform = 'rotateX(90deg) translateY(' + transZTopBot + 'px) translateZ(50vh)'
+face[3].style.transform = 'rotateX(-90deg) translateY(-' + transZTopBot + 'px) translateZ(50vh)'
 
 window.addEventListener('keydown', function(e) {
   if (e.keyCode === 38 && currentFace === 'front') {
     x -= speed
     currentFace = 'top'
-    cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(-50vh)'
+    cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(' + transCubeZTopBot + 'px) translateY(50vh)'
   }
   if (e.keyCode === 38 && currentFace === 'bottom') {
     x -= speed
@@ -22,7 +29,7 @@ window.addEventListener('keydown', function(e) {
   if (e.keyCode === 40 && currentFace === 'front') {
     x += speed
     currentFace = 'bottom'
-    cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(-50vh)'
+    cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(' + transCubeZTopBot + 'px) translateY(-50vh)'
   }
   if (e.keyCode === 40 && currentFace === 'top') {
     x += speed
@@ -32,7 +39,7 @@ window.addEventListener('keydown', function(e) {
   if (e.keyCode === 39 && currentFace === 'front') {
     y -= speed
     currentFace = 'right'
-     cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(0vw)'
+     cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(0vw) translateX(-50vw)'
   }
   if (e.keyCode === 39 && currentFace === 'left') {
     y -= speed
@@ -42,7 +49,7 @@ window.addEventListener('keydown', function(e) {
   if (e.keyCode === 37 && currentFace === 'front') {
     y += speed
     currentFace = 'left'
-     cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(0vw)'
+    cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(0vw) translateX(50vw)'
   }
   if (e.keyCode === 37 && currentFace === 'right') {
     y += speed
