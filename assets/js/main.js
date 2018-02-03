@@ -10,52 +10,152 @@ var currentFace = 'front'
 const vw = window.innerWidth
 const vh = window.innerHeight
 const transZTopBot = 0.5 * vw - 0.5 * vh
-var transCubeZTopBot = -0.5 * vw + 0.5 * vh
+const transCubeZTopBot = -0.5 * vw + 0.5 * vh
 
 face[2].style.transform = 'rotateX(90deg) translateY(' + transZTopBot + 'px) translateZ(50vh)'
 face[3].style.transform = 'rotateX(-90deg) translateY(-' + transZTopBot + 'px) translateZ(50vh)'
 
-window.addEventListener('keydown', function(e) {
-  if (e.keyCode === 38 && currentFace === 'front') {
-    x -= speed
-    currentFace = 'top'
+const toFrontFace = () => {
+	currentFace = 'front'
+    cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(-50vw)'
+}
+
+const toTopFace = () => {
+	x -= speed
+	currentFace = 'top'
     cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(' + transCubeZTopBot + 'px) translateY(50vh)'
-  }
-  if (e.keyCode === 38 && currentFace === 'bottom') {
-    x -= speed
-    currentFace = 'front'
-    cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(-50vw)'
-  } 
-  if (e.keyCode === 40 && currentFace === 'front') {
-    x += speed
-    currentFace = 'bottom'
+}
+
+const toBottomFace = () => {
+	x += speed
+	currentFace = 'bottom'
     cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(' + transCubeZTopBot + 'px) translateY(-50vh)'
-  }
-  if (e.keyCode === 40 && currentFace === 'top') {
-    x += speed
-    currentFace = 'front'
-    cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(-50vw)'
-  }
-  if (e.keyCode === 39 && currentFace === 'front') {
-    y -= speed
-    currentFace = 'right'
-     cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(0vw) translateX(-50vw)'
-  }
-  if (e.keyCode === 39 && currentFace === 'left') {
-    y -= speed
-    currentFace = 'front'
-    cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(-50vw)'
-  } 
-  if (e.keyCode === 37 && currentFace === 'front') {
-    y += speed
-    currentFace = 'left'
+}
+
+const toLeftFace = () => {
+	y += speed
+	currentFace = 'left'
     cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(0vw) translateX(50vw)'
-  }
-  if (e.keyCode === 37 && currentFace === 'right') {
-    y += speed
-    currentFace = 'front'
-    cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(-50vw)'
-  }
+}
+
+const toRightFace = () => {
+	y -= speed
+	currentFace = 'right'
+    cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(0vw) translateX(-50vw)'
+}
+
+const upFct = () => {
+	if (currentFace === 'bottom') {
+		x -= speed
+		toFrontFace()
+	} else if (currentFace !== 'top') {
+		if (currentFace === 'right') {
+			y += speed
+		}
+		if (currentFace === 'left') {
+			y -= speed
+		}
+		toTopFace()
+	}
+}
+
+
+const downFct = () => {
+	if (currentFace === 'top') {
+		x += speed
+		toFrontFace()
+	} else if (currentFace !== 'bottom') {
+		if (currentFace === 'right') {
+			y += speed
+		}
+		if (currentFace === 'left') {
+			y -= speed
+		}
+		toBottomFace()
+	}
+}
+
+
+const leftFct = () => {
+	if (currentFace === 'right') {
+		y += speed
+		toFrontFace()
+	} else if (currentFace !== 'left') {
+		if (currentFace === 'bottom') {
+			x -= speed
+		}
+		if (currentFace === 'top') {
+			x += speed
+		}
+		toLeftFace()
+	}
+}
+
+
+const rightFct = () => {
+	if (currentFace === 'left') {
+		y -= speed
+		toFrontFace()
+	} else if (currentFace !== 'right') {
+		if (currentFace === 'bottom') {
+			x -= speed
+		}
+		if (currentFace === 'top') {
+			x += speed
+		}
+		toRightFace()
+	}
+}
+
+
+window.addEventListener('keydown', function(e) {
+	if (e.keyCode === 38) {
+		upFct()
+	}
+  // if (e.keyCode === 38 && currentFace === 'front') {
+  //   x -= speed
+  //   frontToTopFace(x, y)
+  // }
+  // if (e.keyCode === 38 && currentFace === 'bottom') {
+  //   x -= speed
+  //   toFrontFace(x, y)
+  // }
+  	if (e.keyCode === 40) {
+  		downFct()
+  	}
+  	if (e.keyCode === 39) {
+  		rightFct()
+  	}
+  	if (e.keyCode === 37) {
+  		leftFct()
+  	}
+  // if (e.keyCode === 40 && currentFace === 'front') {
+  //   x += speed
+  //   currentFace = 'bottom'
+  //   cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(' + transCubeZTopBot + 'px) translateY(-50vh)'
+  // }
+  // if (e.keyCode === 40 && currentFace === 'top') {
+  //   x += speed
+  //   toFrontFace(x, y)
+  // }
+  // if (e.keyCode === 39 && currentFace === 'front') {
+  //   y -= speed
+  //   currentFace = 'right'
+  //    cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(0vw) translateX(-50vw)'
+  // }
+  // if (e.keyCode === 39 && currentFace === 'left') {
+  //   y -= speed
+  //   toFrontFace(x, y)
+  // } 
+  // if (e.keyCode === 37 && currentFace === 'front') {
+  //   y += speed
+  //   currentFace = 'left'
+  //   cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(0vw) translateX(50vw)'
+  // }
+  // if (e.keyCode === 37 && currentFace === 'right') {
+  //   y += speed
+  //   toFrontFace(x, y)
+  // }
   /*
   if (e.keyCode === 37 || e.keyCode === 38 || e.keyCode === 39 || e.keyCode === 40) {
     if (check === 0 && (e.keyCode === 37 || e.keyCode === 39)) {
