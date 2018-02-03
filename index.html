@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+  <title>cubeWebsite</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="perspective">
+      <div class="cube">
+        
+        <div class="face front">
+          <h1>WHAT A GAME !</h1>
+          <div id="grid">
+            <div id="line1">
+              <canvas class="wesh" id="case1" width="100" height="100">
+              </canvas>
+              <canvas id="case2" width="100" height="100">
+              </canvas>
+              <canvas id="case3" width="100" height="100"></canvas>
+            </div>
+            <div id="line1">
+              <canvas id="case4" width="100" height="100">
+              </canvas>
+              <canvas id="case5" width="100" height="100">
+              </canvas>
+              <canvas id="case6" width="100" height="100"></canvas>
+            </div>
+            <div id="line1">
+              <canvas id="case7" width="100" height="100">
+              </canvas>
+              <canvas id="case8" width="100" height="100">
+              </canvas>
+              <canvas id="case9" width="100" height="100"></canvas>
+            </div>
+          </div>
+          <p id="endGame"></p>
+          <p id="tip">Don't press 'a'...</p>
+        </div>
+        <div class="face back"></div>
+        <div class="face top"></div>
+        <div class="face bottom"></div>
+        <div class="face left"></div>
+        <div class="face right"></div>
+        
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src='./assets/js/main.js'></script>
+</body>
+</html>
