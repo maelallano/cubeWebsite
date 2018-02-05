@@ -56,12 +56,12 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  opacity: 0.95;
+  opacity: 0.80;
 }
 
 .front {
   transform: translateZ(50vw);
-  background: black;
+  background: white;
 }
 .back {
   transform: translateZ(-50vw) rotateY(180deg);
