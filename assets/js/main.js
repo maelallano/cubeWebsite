@@ -16,8 +16,11 @@ const vh = window.innerHeight
 const transZTopBot = 0.5 * vw - 0.5 * vh
 const transCubeZTopBot = -0.5 * vw + 0.5 * vh
 
-face[2].style.transform = 'rotateX(90deg) translateY(' + transZTopBot + 'px) translateZ(50vh)'
-face[3].style.transform = 'rotateX(-90deg) translateY(-' + transZTopBot + 'px) translateZ(50vh)'
+// face[2].style.transform = 'rotateX(90deg) translateY(' + transZTopBot + 'px) translateZ(50vh)'
+face[2].style.transform = 'rotateX(90deg) translateZ(' + (0.5*vw) + 'px)';
+face[3].style.transform = 'rotateX(-90deg) translateZ(' + (1*vh - 0.5*vw) + 'px)';
+
+console.log(face);
 
 const toFrontFace = () => {
 	currentFace = 'front'
@@ -130,14 +133,6 @@ window.addEventListener('keydown', function(e) {
 	if (e.keyCode === 38) {
 		upFct()
 	}
-  // if (e.keyCode === 38 && currentFace === 'front') {
-  //   x -= speed
-  //   frontToTopFace(x, y)
-  // }
-  // if (e.keyCode === 38 && currentFace === 'bottom') {
-  //   x -= speed
-  //   toFrontFace(x, y)
-  // }
   	if (e.keyCode === 40) {
   		downFct()
   	}
@@ -147,46 +142,6 @@ window.addEventListener('keydown', function(e) {
   	if (e.keyCode === 37) {
   		leftFct()
   	}
-  // if (e.keyCode === 40 && currentFace === 'front') {
-  //   x += speed
-  //   currentFace = 'bottom'
-  //   cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(' + transCubeZTopBot + 'px) translateY(-50vh)'
-  // }
-  // if (e.keyCode === 40 && currentFace === 'top') {
-  //   x += speed
-  //   toFrontFace(x, y)
-  // }
-  // if (e.keyCode === 39 && currentFace === 'front') {
-  //   y -= speed
-  //   currentFace = 'right'
-  //    cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(0vw) translateX(-50vw)'
-  // }
-  // if (e.keyCode === 39 && currentFace === 'left') {
-  //   y -= speed
-  //   toFrontFace(x, y)
-  // } 
-  // if (e.keyCode === 37 && currentFace === 'front') {
-  //   y += speed
-  //   currentFace = 'left'
-  //   cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(0vw) translateX(50vw)'
-  // }
-  // if (e.keyCode === 37 && currentFace === 'right') {
-  //   y += speed
-  //   toFrontFace(x, y)
-  // }
-  /*
-  if (e.keyCode === 37 || e.keyCode === 38 || e.keyCode === 39 || e.keyCode === 40) {
-    if (check === 0 && (e.keyCode === 37 || e.keyCode === 39)) {
-      cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(0vw)'
-      check = 1
-    } else if (check === 0 && (e.keyCode === 38 || e.keyCode === 40)) {
-    cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(-50vh)'
-      check = 1
-    } else {
-      cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(-50vw)'
-      check = 0
-    }
-  }*/
 })
 
 /* TIC TAC TOE */
