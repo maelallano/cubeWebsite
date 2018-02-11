@@ -45,13 +45,13 @@ const toFrontFace = () => {
 const toTopFace = () => {
 	x -= speed
 	currentFace = 'top'
-    cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(' + transCubeZTopBot + 'px) translateY(50vh)'
+    cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(' + (vw/100) + 'px) translateY(50vh)'
 }
 
 const toBottomFace = () => {
 	x += speed
 	currentFace = 'bottom'
-    cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(' + transCubeZTopBot + 'px) translateY(-50vh)'
+    cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(' + (vw/100) + 'px) translateY(-50vh)'
 }
 
 const toLeftFace = () => {

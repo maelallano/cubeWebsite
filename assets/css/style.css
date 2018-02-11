@@ -10,6 +10,7 @@
 
 .goUp {
   grid-area: goUp;
+  align-self: end;
 }
 .goRight {
   grid-area: goRight;
@@ -21,6 +22,14 @@
 .goLeft {
   grid-area: goLeft;
   transform: rotate(-90deg);
+}
+.bottom .goBottom, .top .goBottom {
+  align-self: start;
+  margin-top: 4px;
+}
+.bottom .goTop, .top .goTop {
+  align-self: end;
+  margin-top: 4px;
 }
 
 .goUp:hover, .goBottom:hover, .goLeft:hover, .goRight:hover {
@@ -98,12 +107,14 @@ body {
   transform-origin: center;
   height: 100vw;
   color: rgba(249, 200, 14, 1);
+  grid-template-rows: 28% 44% 28%;
 }
 .bottom {
   /*transform: rotateX(-90deg);*/
   transform-origin: center;
   height: 100vw;
   color: rgba(249, 200, 14, 1);
+  grid-template-rows: 28% 44% 28%;
 }
 
 .navBarRectangle {
