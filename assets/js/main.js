@@ -39,70 +39,112 @@ const transitionOpacity = () => {
 
 const toFrontFace = () => {
 	currentFace = 'front'
-    cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(-50vw)'
+    cube.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(-50vw)'
+}
+
+const toBackFace = (y) => {
+	currentFace = 'back'
+    cube.style.transform = 'rotateX(0deg) rotateY(' + y + 'deg) translateZ(50vw)'
 }
 
 const toTopFace = () => {
-	x -= speed
+	// x -= speed
+	y = 0
 	currentFace = 'top'
     cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(' + (vw/100) + 'px) translateY(50vh)'
 }
 
 const toBottomFace = () => {
-	x += speed
+	// x += speed
+	y = 0
 	currentFace = 'bottom'
     cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(' + (vw/100) + 'px) translateY(-50vh)'
 }
 
 const toLeftFace = () => {
 	y += speed
-	currentFace = 'left'
-    cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(0vw) translateX(50vw)'
+	if (currentFace === 'back') {
+		cube.style.transform = 'rotateX(0deg) rotateY(90deg) translateZ(0vw) translateX(-50vw)'
+		y = -90
+		x = 0
+		setTimeout(function() {
+			cube.style.transform = 'rotateX(0deg) rotateY(-90deg) translateZ(0vw) translateX(-50vw)'
+		}, 1)
+		currentFace = 'right'
+		return;
+	} else {
+		currentFace = 'left'
+	    cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(0vw) translateX(50vw)'
+	}
 }
 
 const toRightFace = () => {
 	y -= speed
-	currentFace = 'right'
-    cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(0vw) translateX(-50vw)'
+	if (currentFace === 'back') {
+		cube.style.transform = 'rotateX(0deg) rotateY(90deg) translateZ(0vw) translateX(50vw)'
+		cube.classList.add('spin')
+		y = 90
+		x = 0
+		setTimeout(function() {
+			cube.classList.remove('spin')
+		}, 1400)
+		currentFace = 'left'
+		return;
+	} else {
+		currentFace = 'right'
+	    cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(0vw) translateX(-50vw)'
+	}
 }
 
 const upFct = () => {
-	if (currentFace === 'bottom') {
-		x -= speed
+	if (currentFace === 'top') {
+		toBackFace(-180)
+	} else if (currentFace === 'bottom') {
+		x = 0
 		toFrontFace()
-	} else if (currentFace !== 'top') {
+	} else {
 		if (currentFace === 'right') {
 			y += speed
 		}
 		if (currentFace === 'left') {
 			y -= speed
 		}
+		x = -90
 		toTopFace()
 	}
 }
 
 
 const downFct = () => {
-	if (currentFace === 'top') {
-		x += speed
+	if (currentFace === 'bottom') {
+		toBackFace(180)
+	} else if (currentFace === 'top') {
+		x = 0
 		toFrontFace()
-	} else if (currentFace !== 'bottom') {
+	} else {
 		if (currentFace === 'right') {
 			y += speed
 		}
 		if (currentFace === 'left') {
 			y -= speed
 		}
+		x = 90
 		toBottomFace()
 	}
 }
 
 
 const leftFct = () => {
-	if (currentFace === 'right') {
+	if (currentFace === 'back') {
+		toLeftFace()
+		return;
+	}
+	if (currentFace === 'left') {
+		toBackFace(-180)
+	} else if (currentFace === 'right') {
 		y += speed
 		toFrontFace()
-	} else if (currentFace !== 'left') {
+	} else {
 		if (currentFace === 'bottom') {
 			x -= speed
 		}
@@ -115,10 +157,16 @@ const leftFct = () => {
 
 
 const rightFct = () => {
-	if (currentFace === 'left') {
+	if (currentFace === 'back') {
+		toRightFace()
+		return;
+	}
+	if (currentFace === 'right') {
+		toBackFace(180)
+	} else if (currentFace === 'left') {
 		y -= speed
 		toFrontFace()
-	} else if (currentFace !== 'right') {
+	} else {
 		if (currentFace === 'bottom') {
 			x -= speed
 		}

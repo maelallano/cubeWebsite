@@ -1,3 +1,13 @@
+@-webkit-keyframes spin {
+  from { transform: rotateY(180deg) translateZ(50vw) translateX(0vw); }
+  to   { transform: rotateY(90deg) translateZ(0vw) translateX(50vw); }
+}
+
+/* cube wrapper */
+.spin {
+  animation: spin 1.4s ease;
+}
+
 .goUp, .goBottom, .goLeft, .goRight {
   font-weight: 900;
   font-size: 2em;
@@ -10,7 +20,6 @@
 
 .goUp {
   grid-area: goUp;
-  align-self: end;
 }
 .goRight {
   grid-area: goRight;
@@ -25,11 +34,11 @@
 }
 .bottom .goBottom, .top .goBottom {
   align-self: start;
-  margin-top: 4px;
+  margin-top: 8px;
 }
-.bottom .goTop, .top .goTop {
+.bottom .goUp, .top .goUp {
   align-self: end;
-  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .goUp:hover, .goBottom:hover, .goLeft:hover, .goRight:hover {
@@ -39,7 +48,7 @@
 }
 
 body {
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .wrapper {
@@ -61,7 +70,7 @@ body {
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  transition: all 1.4s;
+  transition: all ease 1.4s;
   transform: translateZ(-50vw);
 }
 .face {
@@ -157,4 +166,8 @@ body {
   color: rgba(249, 200, 14, 1);
 }
 .front_heplUserText {
+}
+.greyed {
+  text-decoration: line-through;
+  color: grey;
 }
