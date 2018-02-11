@@ -173,10 +173,10 @@ function handleTouchMove(evt) {
     if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
         if ( xDiff > 0 ) {
             /* left swipe */ 
-            leftFct();
+            rightFct();
         } else {
             /* right swipe */
-            rightFct();
+            leftFct();
         }                       
     } else {
         if ( yDiff > 0 ) {
