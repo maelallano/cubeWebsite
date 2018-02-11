@@ -5,6 +5,7 @@ var goUp = document.querySelectorAll('.goUp')
 var goBottom = document.querySelectorAll('.goBottom')
 var goRight = document.querySelectorAll('.goRight')
 var goLeft = document.querySelectorAll('.goLeft')
+var more = document.querySelector('.more')
 
 var x = 0
 var y = 0
@@ -14,13 +15,14 @@ var currentFace = 'front'
 const vw = window.innerWidth
 const vh = window.innerHeight
 const transZTopBot = 0.5 * vw - 0.5 * vh
-const transCubeZTopBot = -0.5 * vw + 0.5 * vh
+var transCubeZTopBot = -0.5 * vw + 0.5 * vh
 
-// face[2].style.transform = 'rotateX(90deg) translateY(' + transZTopBot + 'px) translateZ(50vh)'
 face[2].style.transform = 'rotateX(90deg) translateZ(' + (0.5*vw) + 'px)';
 face[3].style.transform = 'rotateX(-90deg) translateZ(' + (1*vh - 0.5*vw) + 'px)';
 
-console.log(face);
+more.addEventListener('click', function() {
+    cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(' + (transCubeZTopBot + vw - vh) + 'px) translateY(-50vh)';
+});
 
 const toFrontFace = () => {
 	currentFace = 'front'
