@@ -24,6 +24,19 @@ more.addEventListener('click', function() {
     cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(' + (transCubeZTopBot + vw - vh) + 'px) translateY(-50vh)';
 });
 
+const transitionOpacity = () => {
+	for (var i = 0; i < face.length; i++) {
+		face[i].classList.add('faceOpacity');
+	}
+
+	setTimeout(function() {
+		for (var i = 0; i < face.length; i++) {
+			face[i].classList.remove('faceOpacity');
+		}
+	}, 1400);
+
+}
+
 const toFrontFace = () => {
 	currentFace = 'front'
     cube.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(-50vw)'
@@ -134,15 +147,19 @@ for (var i = 0; i < goUp.length; i++) {
 window.addEventListener('keydown', function(e) {
 	if (e.keyCode === 38) {
 		upFct()
+		transitionOpacity()
 	}
   	if (e.keyCode === 40) {
   		downFct()
+		transitionOpacity()
   	}
   	if (e.keyCode === 39) {
   		rightFct()
+		transitionOpacity()
   	}
   	if (e.keyCode === 37) {
   		leftFct()
+		transitionOpacity()
   	}
 })
 
