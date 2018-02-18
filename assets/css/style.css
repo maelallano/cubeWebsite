@@ -44,7 +44,7 @@
 .goUp:hover, .goBottom:hover, .goLeft:hover, .goRight:hover {
   color: silver;
   text-decoration: line-through;
-  transition: .3s ease;
+  transition: all ease-out .3s;
 }
 
 body {
@@ -55,7 +55,7 @@ body {
 .wrapper {
   width: 100vw;
   height: 100vh;
-  background: #B73AFF;
+  background: radial-gradient(circle, red, yellow, orange);
 }
 
 .perspective {
@@ -202,4 +202,9 @@ body {
 span.blueColored:hover {
   text-decoration: underline;
   transition: all ease-out .3s;
+}
+
+.comingSoon {
+  font-size: 40px;
+  font-weight: 900;
 }
