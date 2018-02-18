@@ -208,3 +208,75 @@ span.blueColored:hover {
   font-size: 40px;
   font-weight: 900;
 }
+
+.contactMe__contentDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  height: 90%;
+}
+.contactMe__Title {
+  color: white;
+  font-size: 26px;
+  font-weight: 600;
+  text-align: center;
+}
+.contactMe__List {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+.contactMe__ListItemsLink {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 84px;
+  width: 160px;
+  font-size: 30px;
+  font-weight: 900;
+}
+.contactMe__ListItemsLink img {
+  width: 48px;
+  height: 48px;
+}
+.contactMe__Text {
+  text-align: center;
+  color: white;
+  font-size: 22px;
+}
+.contactMe__Form {
+  display: flex;
+  flex-direction: row;
+  width: 570px;
+  align-items: flex-end;
+}
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 4;
+}
+.contactMe__Form input {
+  background: rgba(0, 0, 0, 0);
+  color: white;
+  height: 30px;
+  font-size: 18px;
+  border: 1px solid rgba(183, 58, 255, 1);
+  width: 500px;
+}
+.inputText {
+  border: 1px solid rgba(183, 58, 255, 1);
+  height: 180px;
+  font-size: 18px;
+  width: 500px;
+  background: rgba(0, 0, 0, 0);
+  color: white;
+}
+.contactMe__submit {
+  width: 60px !important;
+  background: rgba(183, 58, 255, 1) !important;
+}
