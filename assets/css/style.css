@@ -209,6 +209,8 @@ span.blueColored:hover {
   font-weight: 900;
 }
 
+/*contactMe*/
+
 .contactMe__contentDiv {
   display: flex;
   flex-direction: column;
@@ -279,4 +281,75 @@ span.blueColored:hover {
 .contactMe__submit {
   width: 60px !important;
   background: rgba(183, 58, 255, 1) !important;
+}
+
+/*projects*/
+
+.projects__ContentDiv {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.projects__Title {
+  font-weight: 600;
+  font-size: 26px;
+  text-align: center;
+}
+
+.projects__Wrapper {
+  display: grid;
+  grid-template: 200px 250px / repeat(3, 200px);
+  width: 800px;
+  height: 450px;
+  justify-content: space-between;
+}
+
+.projects__projectContainer {
+  width: 200px;
+  height: 200px;
+  align-self: end;
+}
+
+.projects__imgDiv {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.projects__img {
+  height: 100%;
+  width: 100%;
+  background: blue;
+  max-width: 100%;
+  transition: ease 1.8s;
+}
+
+.projects__imgHover {
+  height: 200px;
+  width: 200px;
+  background: black;
+  position: absolute;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 2;
+}
+
+.projects__imgHoverText {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.projects__projectContainer:hover .projects__img {
+    transform: scale(1.16);
+}
+
+.projects__projectContainer:hover .projects__imgHover {
+  transition: ease 0.6s;
+  opacity: 0.6;
 }
