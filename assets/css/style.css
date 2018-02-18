@@ -96,34 +96,28 @@ body {
 
 .front {
   transform: translateZ(50vw);
-  color: rgba(240, 100, 73, 1);
 }
 .back {
   transform: translateZ(-50vw) rotateY(180deg);
-  color: rgba(240, 100, 73, 1);
 }
 .left {
   transform: rotateY(270deg) translateX(-50vw);
   transform-origin: center left;
-  color: rgba(111, 171, 232, 1);
 }
 .right {
   transform: rotateY(-270deg) translateX(50vw);
   transform-origin: top right;
-  color: rgba(111, 171, 232, 1);
 }
 .top {
   /*transform: rotateX(90deg);*/
   transform-origin: center;
   height: 100vw;
-  color: rgba(249, 200, 14, 1);
   grid-template-rows: 28% 44% 28%;
 }
 .bottom {
   /*transform: rotateX(-90deg);*/
   transform-origin: center;
   height: 100vw;
-  color: rgba(249, 200, 14, 1);
   grid-template-rows: 28% 44% 28%;
 }
 
@@ -136,11 +130,17 @@ body {
   justify-content: center;
   align-items: center;
 }
-.front_navBarRectangle, .back_navBarRectangle {
+.front_navBarRectangle {
   border: 1px solid rgba(240, 100, 73, 1);
 }
-.left_navBarRectangle, .right_navBarRectangle {
+.back_navBarRectangle {
+  border: 1px solid rgba(183, 58, 255, 1);
+}
+.left_navBarRectangle {
   border: 1px solid rgba(111, 171, 232, 1);
+}
+.right_navBarRectangle {
+  border: 1px solid rgba(53, 255, 105, 1);
 }
 .top_navBarRectangle, .bottom_navBarRectangle {
   border: 1px solid rgba(249, 200, 14, 1);
@@ -166,9 +166,40 @@ body {
 .yellowColored {
   color: rgba(249, 200, 14, 1);
 }
+.greenColored {
+  color: rgba(53, 255, 105, 1);
+}
+.purpleColored {
+  color: rgba(183, 58, 255, 1);
+}
 .front_heplUserText {
 }
 .greyed {
   text-decoration: line-through;
   color: grey;
+}
+
+.aboutMe__ContentDiv {
+  width: 80%;
+  height: 70%;
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+}
+.aboutMe__Title {
+  font-size: 36px;
+}
+.aboutMe__Text {
+  line-height: 45px;
+  font-weight: 300;
+}
+.contactMe {
+  cursor: pointer;
+}
+span.blueColored:hover {
+  text-decoration: underline;
+  transition: all ease-out .3s;
 }

@@ -5,6 +5,7 @@ var goUp = document.querySelectorAll('.goUp')
 var goBottom = document.querySelectorAll('.goBottom')
 var goRight = document.querySelectorAll('.goRight')
 var goLeft = document.querySelectorAll('.goLeft')
+var contactMe = document.querySelector('.contactMe')
 // var more = document.querySelector('.more')
 
 var x = 0
@@ -209,6 +210,10 @@ window.addEventListener('keydown', function(e) {
   		leftFct()
 		transitionOpacity()
   	}
+})
+
+contactMe.addEventListener('click', function() {
+	leftFct();
 })
 
 /* -------------- mobile swipe ------------------- */
