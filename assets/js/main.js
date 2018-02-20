@@ -261,3 +261,129 @@ function handleTouchMove(evt) {
     xDown = null;
     yDown = null;                                             
 };
+
+// what's in the box ??
+
+var container;
+var camera, scene, renderer;
+var mesh, lightMesh, geometry;
+var spheres = [];
+var directionalLight, pointLight;
+var mouseX = 0;
+var mouseY = 0;
+var windowHalfX = window.innerWidth / 2;
+var windowHalfY = window.innerHeight / 2;
+document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+init();
+animate();
+function init() {
+	container = document.createElement( 'div' );
+	container.classList.add('canvasDiv');
+	document.body.appendChild( container );
+	camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 100000 );
+	camera.position.z = 3200;
+	scene = new THREE.Scene();
+	var spotLight = new THREE.SpotLight( 0xffffff, 2, 200, 1.05 );
+	spotLight.position.set( 0, 0, 0 );
+
+	spotLight.castShadow = true;
+
+	spotLight.shadow.mapSize.width = 1024;
+	spotLight.shadow.mapSize.height = 1024;
+
+	spotLight.shadow.camera.near = 500;
+	spotLight.shadow.camera.far = 4000;
+	spotLight.shadow.camera.fov = 30;
+
+	scene.add( spotLight );
+	scene.background = new THREE.CubeTextureLoader()
+		.setPath( 'assets/textures/' )
+		.load( [ 'px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png' ] );
+	var geometry = new THREE.SphereBufferGeometry( 100, 32, 16 );
+	var material = new THREE.MeshBasicMaterial( { color: 0xffffff, envMap: scene.background } );
+	for ( var i = 0; i < 500; i ++ ) {
+		var mesh = new THREE.Mesh( geometry, material );
+		mesh.position.x = Math.random() * 10000 - 5000;
+		mesh.position.y = Math.random() * 10000 - 5000;
+		mesh.position.z = Math.random() * 10000 - 5000;
+		mesh.scale.x = mesh.scale.y = mesh.scale.z = Math.random() * 3 + 1;
+		scene.add( mesh );
+		spheres.push( mesh );
+	}
+	//
+	renderer = new THREE.WebGLRenderer();
+	renderer.setPixelRatio( window.devicePixelRatio );
+	renderer.setSize( window.innerWidth, window.innerHeight );
+	container.appendChild( renderer.domElement );
+	//
+	window.addEventListener( 'resize', onWindowResize, false );
+}
+function onWindowResize() {
+	windowHalfX = window.innerWidth / 2;
+	windowHalfY = window.innerHeight / 2;
+	camera.aspect = window.innerWidth / window.innerHeight;
+	camera.updateProjectionMatrix();
+	renderer.setSize( window.innerWidth, window.innerHeight );
+}
+function onDocumentMouseMove( event ) {
+	mouseX = ( event.clientX - windowHalfX ) * 10;
+	mouseY = ( event.clientY - windowHalfY ) * 10;
+}
+//
+function animate() {
+	requestAnimationFrame( animate );
+	render();
+}
+function render() {
+	var timer = 0.0001 * Date.now();
+	for ( var i = 0, il = spheres.length; i < il; i ++ ) {
+		var sphere = spheres[ i ];
+		sphere.position.x = 5000 * Math.cos( timer + i );
+		sphere.position.y = 5000 * Math.sin( timer + i * 1.1 );
+	}
+	camera.position.x += ( mouseX - camera.position.x ) * .05;
+	camera.position.y += ( - mouseY - camera.position.y ) * .05;
+	camera.lookAt( scene.position );
+	renderer.render( scene, camera );
+}
+
+var canvasDiv = document.querySelector('.canvasDiv');
+
+var canvasBtn = document.createElement('button');
+canvasBtn.classList.add('canvasBtn');
+canvasBtn.textContent = 'Go back';
+
+canvasDiv.appendChild(canvasBtn);
+
+var whatInTheBoxBtn = document.querySelector('.whatInTheBoxBtn');
+
+canvasDiv.classList.toggle('hidden');
+
+whatInTheBoxBtn.addEventListener('click', function() {
+	canvasDiv.classList.toggle('hidden');
+	wrapper.classList.toggle('hidden');
+})
+
+canvasBtn.addEventListener('click', function() {
+	canvasDiv.classList.toggle('hidden');
+	wrapper.classList.toggle('hidden');
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
