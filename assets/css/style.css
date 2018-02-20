@@ -14,7 +14,7 @@
   align-self: center;
   justify-self: center;
   text-transform: uppercase;
-  width: 300px;
+  width: 350px;
   text-align: center;
 }
 
@@ -129,6 +129,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
 }
 .front_navBarRectangle {
   border: 1px solid rgba(240, 100, 73, 1);
@@ -242,6 +243,14 @@ span.blueColored:hover {
   font-size: 30px;
   font-weight: 900;
 }
+/*.contactMe__ListItems {
+  transition: ease 0.3S;
+}
+ .contactMe__ListItems1:hover .contactMe__ListItemsLink{
+  //border: 1px solid rgba(183, 58, 255, 1);
+  color: rgba(183, 58, 255, 0.1);
+  transition: ease 0.3S;
+}*/
 .contactMe__ListItemsLink img {
   width: 48px;
   height: 48px;
@@ -261,6 +270,12 @@ span.blueColored:hover {
   display: flex;
   flex-direction: column;
   flex-grow: 4;
+}
+.inputWrapper input, .inputWrapper textarea {
+  padding-left: 8px;
+}
+.inputWrapper textarea {
+  margin-right: 8px;
 }
 .contactMe__Form input {
   background: rgba(0, 0, 0, 0);
@@ -282,7 +297,9 @@ span.blueColored:hover {
   width: 60px !important;
   background: rgba(183, 58, 255, 1) !important;
 }
-
+.contactMe__Mail:hover {
+  text-decoration: underline;
+}
 /*projects*/
 
 .projects__ContentDiv {
@@ -310,6 +327,7 @@ span.blueColored:hover {
   width: 200px;
   height: 200px;
   align-self: end;
+  border: 2px solid rgba(53, 255, 105, 1);
 }
 
 .projects__imgDiv {
@@ -356,6 +374,27 @@ span.blueColored:hover {
 
 .hidden {
   display: none;
+}
+
+.whatInTheBoxBtn {
+  width: 340px;
+  height: 170px;
+  font-size: 28px;
+  font-weight: 900;
+  background: black;
+  border: 1px solid rgba(249, 200, 14, 1);
+  color: rgba(249, 200, 14, 1);
+  transition: ease .3s;
+}
+
+.whatInTheBoxBtn:hover {
+  width: 340px;
+  height: 170px;
+  background: rgba(249, 200, 14, 1);
+  border: 1px solid rgba(249, 200, 14, 1);
+  color: black;
+  transition: ease .3s;
+  cursor: pointer;
 }
 
 .canvasBtn {
