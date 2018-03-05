@@ -40,11 +40,11 @@
   align-self: end;
   margin-bottom: 4px;
 }
-
 .goUp:hover, .goBottom:hover, .goLeft:hover, .goRight:hover {
   color: silver;
   text-decoration: line-through;
   transition: all ease-out .3s;
+  cursor: pointer;
 }
 
 body {
@@ -357,6 +357,10 @@ span.blueColored:hover {
   z-index: 2;
 }
 
+.projects__imgHover:hover {
+  cursor: pointer;
+}
+
 .projects__imgHoverText {
   color: white;
   font-weight: bold;
@@ -401,4 +405,21 @@ span.blueColored:hover {
   position: absolute;
   top: 10px;
   left: 10px;
+  width: 110px;
+  height: 36px;
+  font-size: 18px;
+  font-weight: 900;
+  background: black;
+  border: 1px solid rgba(249, 200, 14, 1);
+  color: rgba(249, 200, 14, 1);
+  transition: ease .3s;
+}
+.canvasBtn:hover {
+  width: 110px;
+  height: 36px;
+  background: rgba(249, 200, 14, 1);
+  border: 1px solid rgba(249, 200, 14, 1);
+  color: black;
+  transition: ease .3s;
+  cursor: pointer;
 }
